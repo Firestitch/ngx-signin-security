@@ -4,13 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { FsExampleModule } from '@firestitch/example';
+import { FsPasswordModule } from '@firestitch/password';
 
 import { FsSigninSecurityModule } from 'fs-signin-security';
 
 import { AppMaterialModule } from './material.module';
 import {
-ExampleComponent,
+UpdateComponent,
+ResetComponent,
 ExamplesComponent } from './components';
 import { AppComponent } from './app.component';
 
@@ -23,10 +27,12 @@ const routes: Routes = [
   bootstrap: [ AppComponent ],
   imports: [
     BrowserModule,
-    FsSigninSecurityModule,
+    FsSigninSecurityModule.forRoot(),
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
+    FsPasswordModule.forRoot(),
+    ToastrModule.forRoot({ preventDuplicates: true }),
     FsExampleModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
@@ -35,7 +41,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ExamplesComponent,
-    ExampleComponent
+    UpdateComponent,
+    ResetComponent
   ],
   providers: [
   ],

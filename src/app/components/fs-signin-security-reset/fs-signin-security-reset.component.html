@@ -1,0 +1,25 @@
+<form (fsForm)="save()">
+  <div mat-dialog-title>Reset Password</div>
+  <mat-dialog-content>
+    <div fxLayout="column">
+      <mat-slide-toggle color="primary" [(ngModel)]="password" name="password">Automatically generate a password</mat-slide-toggle>
+      <mat-form-field *ngIf="!password">
+        <input
+          matInput
+          [(ngModel)]="newPassword"
+          [fsFormMinLength]="minLength"
+          [type]="shouldObfuscatePassword ? 'password' : 'text'"
+          placeholder="Password"
+          fsFormRequired
+          name="new_password">
+          <mat-icon matSuffix (click)="shouldObfuscatePassword = !shouldObfuscatePassword">{{ shouldObfuscatePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+      </mat-form-field>
+      <mat-slide-toggle color="primary" [(ngModel)]="changePassword" name="change_password">Force user to create new password on next sign-in</mat-slide-toggle>
+      <mat-slide-toggle color="primary" [(ngModel)]="emailPassword" name="email_password">Email new password to {{ email }}</mat-slide-toggle>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">RESET PASSWORD</button>
+    <button mat-button color="primary" mat-dialog-close>CANCEL</button>
+  </mat-dialog-actions>
+</form>
