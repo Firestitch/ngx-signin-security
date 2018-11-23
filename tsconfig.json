@@ -18,7 +18,7 @@
       "dom"
     ],
     "paths": {
-      "fs-package": [
+      "fs-signin-security": [
         "src/public_api.ts"
       ]
     }
