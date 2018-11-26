@@ -13,7 +13,7 @@ import { FsSigninSecurityModule } from 'fs-signin-security';
 
 import { AppMaterialModule } from './material.module';
 import {
-UpdateComponent,
+ChangeComponent,
 ResetComponent,
 ExamplesComponent } from './components';
 import { AppComponent } from './app.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ExamplesComponent,
-    UpdateComponent,
+    ChangeComponent,
     ResetComponent
   ],
   providers: [

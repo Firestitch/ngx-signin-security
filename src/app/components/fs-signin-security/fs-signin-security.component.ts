@@ -19,12 +19,12 @@ export class FsSigninSecurityComponent implements OnInit {
 
   @Input() public email: string = null;
   @Input() public lastSignIn: any = null;
-  @Input() public passwordBehavior: 'reset' | 'update' = 'update';
+  @Input() public passwordBehavior: 'reset' | 'change' = 'change';
   @Input() public enableCurrentPassword = true;
   @Input() public minLength = 6;
 
   @Output() public resetPassword = new EventEmitter<Password>();
-  @Output() public updatePassword = new EventEmitter<Password>();
+  @Output() public changePassword = new EventEmitter<Password>();
 
   public date = null;
 
@@ -37,7 +37,7 @@ export class FsSigninSecurityComponent implements OnInit {
     this.date = this.lastSignIn ? format(this.lastSignIn, 'date-time') : 'Never';
   }
 
-  public onUpdatePassword() {
+  public onChangePassword() {
 
     this.fsPassword.open({
       minLength: this.minLength,
@@ -50,7 +50,7 @@ export class FsSigninSecurityComponent implements OnInit {
       }
     }).subscribe(response => {
       if (response.action === 'submit') {
-        this.updatePassword.emit(response.result);
+        this.changePassword.emit(response.result);
       }
     });
   }

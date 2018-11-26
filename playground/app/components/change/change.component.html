@@ -1,6 +1,6 @@
 <fs-signin-security
     [email]="account.email"
     [lastSignIn]="account.login_date"
-    passwordBehavior="update"
-    (updatePassword)="updatePassword($event)">
+    passwordBehavior="change"
+    (changePassword)="changePassword($event)">
 </fs-signin-security>
