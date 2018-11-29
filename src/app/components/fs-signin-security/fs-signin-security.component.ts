@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { of } from 'rxjs/Observable/of';
+import { of } from 'rxjs';
 
 import { FsPasswordService } from '@firestitch/password';
 import { format } from '@firestitch/date';
