@@ -30,13 +30,21 @@ export class FsSigninSecurityResetComponent implements OnInit {
   public ngOnInit() {
     this.email = this.data.email;
     this.minLength = this.data.minLength;
+
+    this.password = this.data.resetPasswordOptions.password;
+    this.changePassword = this.data.resetPasswordOptions.changePassword;
+    this.emailPassword = this.data.resetPasswordOptions.emailPassword;
+
+    this.generatePassword();
   }
 
-  public save() {
-
+  public generatePassword() {
     if (this.password) {
       this.newPassword = guid();
     }
+  }
+
+  public save() {
 
     this.close({
       password: this.newPassword,

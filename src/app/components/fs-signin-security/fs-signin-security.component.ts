@@ -23,6 +23,12 @@ export class FsSigninSecurityComponent implements OnInit {
   @Input() public enableCurrentPassword = true;
   @Input() public minLength = 6;
 
+  @Input() public resetPasswordOptions = {
+    password: true,
+    changePassword: true,
+    emailPassword: true
+  };
+
   @Output() public resetPassword = new EventEmitter<Password>();
   @Output() public changePassword = new EventEmitter<Password>();
 
@@ -57,7 +63,11 @@ export class FsSigninSecurityComponent implements OnInit {
 
   public onResetPassword() {
     const dialogRef = this.dialog.open(FsSigninSecurityResetComponent, {
-      data: { email: this.email, minLength: this.minLength }
+      data: {
+        email: this.email,
+        minLength: this.minLength,
+        resetPasswordOptions: this.resetPasswordOptions
+      }
     });
 
     dialogRef.afterClosed().subscribe(response => {
