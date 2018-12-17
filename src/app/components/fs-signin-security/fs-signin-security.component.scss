@@ -4,19 +4,13 @@
   }
 
   ::ng-deep {
-    mat-form-field {
-      .mat-form-field-underline {
-        display: none;
+    fs-label-field {
+      fs-label {
+        .mat-icon {
+          width: auto;
+          margin-right: 2px;
+        }
       }
     }
-  }
-
-  .label {
-    color: #999;
-    display: block;
-    top: 0;
-    transform: scale(.75);
-    transform-origin: 0 0;
-    position: relative;
   }
 }

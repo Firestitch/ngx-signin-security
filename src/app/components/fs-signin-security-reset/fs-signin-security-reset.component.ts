@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+import { FsMessage } from '@firestitch/message';
 import { guid } from '@firestitch/common/util';
 
 
@@ -17,13 +18,16 @@ export class FsSigninSecurityResetComponent implements OnInit {
 
   public shouldObfuscatePassword = true;
 
-  public newPassword: any = null;
+  public newGeneratedPassword: string = null;
+  public newCustomPassword: string = null;
 
   public email = null;
   public minLength = 6;
+  public passwordMask = null;
 
   constructor(
     private dialogRef: MatDialogRef<FsSigninSecurityResetComponent>,
+    private fsMessage: FsMessage,
     @Inject(MAT_DIALOG_DATA) public data
   ) { }
 
@@ -35,19 +39,18 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.changePassword = this.data.resetPasswordOptions.changePassword;
     this.emailPassword = this.data.resetPasswordOptions.emailPassword;
 
+    this.passwordMask = this.generateMask(this.minLength, '*');
     this.generatePassword();
   }
 
   public generatePassword() {
-    if (this.password) {
-      this.newPassword = guid();
-    }
+    this.newGeneratedPassword = guid(this.generateMask(this.minLength, 'x'));
   }
 
   public save() {
 
     this.close({
-      password: this.newPassword,
+      password: this.getCurrentPassword(),
       email_password: this.emailPassword,
       change_password: this.changePassword
     });
@@ -55,6 +58,18 @@ export class FsSigninSecurityResetComponent implements OnInit {
 
   public close(data = null) {
     this.dialogRef.close(data);
+  }
+
+  public clipboard() {
+    this.fsMessage.success(`Copied to clipboard`);
+  }
+
+  private getCurrentPassword() {
+    return this.password ? this.newGeneratedPassword : this.newCustomPassword;
+  }
+
+  private generateMask(length, symbol) {
+    return new Array(length + 1).join(symbol);
   }
 
 }

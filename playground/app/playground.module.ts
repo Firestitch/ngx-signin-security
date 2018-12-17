@@ -1,3 +1,5 @@
+import './styles.scss';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsPasswordModule } from '@firestitch/password';
+import { FsMessageModule } from '@firestitch/message';
 
 import { FsSigninSecurityModule } from 'fs-signin-security';
 
@@ -31,6 +34,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
+    FsMessageModule.forRoot(),
     FsPasswordModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     FsExampleModule.forRoot(),

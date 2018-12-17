@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import * as moment from 'moment-timezone';
 
 
@@ -7,6 +8,8 @@ import * as moment from 'moment-timezone';
   templateUrl: './reset.component.html'
 })
 export class ResetComponent {
+
+  constructor() { }
 
   public account = {
     email: 'john_doe@gmail.com',

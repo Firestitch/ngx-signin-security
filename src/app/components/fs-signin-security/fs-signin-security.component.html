@@ -1,16 +1,16 @@
 <div fxLayout="row" fxLayoutGap="16px">
-  <mat-form-field>
-    <mat-label><mat-icon inline="true">email</mat-icon> Email</mat-label>
-    <input matInput [ngModel]="email" name="email">
-  </mat-form-field>
-  <div>
-    <div class="label"><mat-icon inline="true">vpn_key</mat-icon> Password</div>
+  <fs-label-field>
+    <fs-label><mat-icon inline="true">email</mat-icon> Email</fs-label>
+    {{ email }}
+  </fs-label-field>
+  <fs-label-field>
+    <fs-label><mat-icon inline="true">vpn_key</mat-icon> Password</fs-label>
     <a *ngIf="passwordBehavior === 'change'" (click)="onChangePassword()">Change Password</a>
     <a *ngIf="passwordBehavior === 'reset'" (click)="onResetPassword()">Reset Password</a>
-  </div>
+  </fs-label-field>
 </div>
 
-<mat-form-field>
-  <mat-label>Last Sign In</mat-label>
-  <input matInput [ngModel]="date" name="date">
-</mat-form-field>
+<fs-label-field>
+  <fs-label>Last Sign In</fs-label>
+  {{ date }}
+</fs-label-field>

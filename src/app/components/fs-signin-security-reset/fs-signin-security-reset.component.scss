@@ -1,0 +1,16 @@
+:host {
+  // For some reason dialog scroll behave strange with mat-slide component
+  .mat-dialog-content {
+    overflow: initial;
+  }
+  .password {
+    margin-left: 44px;
+  }
+  ::ng-deep {
+    mat-form-field, fs-label-field {
+      mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}
