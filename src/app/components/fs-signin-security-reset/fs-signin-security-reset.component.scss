@@ -2,6 +2,7 @@
   // For some reason dialog scroll behave strange with mat-slide component
   .mat-dialog-content {
     overflow: initial;
+    padding-bottom: 10px;
   }
   .password {
     margin-left: 44px;

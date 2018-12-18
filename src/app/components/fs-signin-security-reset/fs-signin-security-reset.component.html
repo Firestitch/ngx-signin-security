@@ -45,6 +45,6 @@
 
 
 <ng-template #passwordActionsTemplate let-obfuscate="obfuscate" let-password="password">
-  <mat-icon (click)="shouldObfuscatePassword = !shouldObfuscatePassword">{{ shouldObfuscatePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
-  <mat-icon ngxClipboard [cbContent]="password" (click)="clipboard()">content_copy</mat-icon>
+  <mat-icon (click)="shouldObfuscatePassword = !shouldObfuscatePassword" *ngIf="!shouldObfuscatePassword">visibility</mat-icon>
+  <mat-icon (click)="shouldObfuscatePassword = !shouldObfuscatePassword;clipboard()" *ngIf="shouldObfuscatePassword" ngxClipboard [cbContent]="password">visibility_off</mat-icon>
 </ng-template>
