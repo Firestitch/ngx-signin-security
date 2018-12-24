@@ -48,7 +48,17 @@ export class FsSigninSecurityComponent implements OnInit {
     this.fsPassword.open({
       minLength: this.minLength,
       enableCurrentPassword: this.enableCurrentPassword,
-      buttons: [],
+      buttons: [
+        {
+          label: 'UPDATE PASSWORD',
+          action: 'submit',
+          color: 'primary'
+        },
+        {
+          label: 'CANCEL',
+          action: 'cancel'
+        }
+      ],
       exclude: [],
       submit: (newPassword, oldPassword) => {
         const result: Password = { current_password: oldPassword, new_password: newPassword };
