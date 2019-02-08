@@ -47,6 +47,10 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.newGeneratedPassword = guid(this.generateMask(this.minLength, 'x'));
   }
 
+  public toggleShouldObfuscatePassword() {
+    this.shouldObfuscatePassword = !this.shouldObfuscatePassword;
+  }
+
   public save() {
 
     this.close({
@@ -69,7 +73,7 @@ export class FsSigninSecurityResetComponent implements OnInit {
   }
 
   private generateMask(length, symbol) {
-    return new Array(length + 1).join(symbol);
+    return symbol.repeat(length);
   }
 
 }

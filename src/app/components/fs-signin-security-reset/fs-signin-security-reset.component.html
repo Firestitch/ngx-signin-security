@@ -2,7 +2,13 @@
   <div mat-dialog-title>Reset Password</div>
   <mat-dialog-content>
     <div fxLayout="column">
-      <mat-slide-toggle color="primary" [(ngModel)]="password" (ngModelChange)="generatePassword()" name="password">Automatically generate new password</mat-slide-toggle>
+      <mat-slide-toggle
+        [(ngModel)]="password"
+        (ngModelChange)="generatePassword()"
+        color="primary"
+        name="password">
+        Automatically generate new password
+      </mat-slide-toggle>
 
       <div class="password">
         <fs-label-field *ngIf="password">
@@ -11,7 +17,7 @@
             <span>{{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}</span>
             <ng-template
               [ngTemplateOutlet]="passwordActionsTemplate"
-              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, password: newGeneratedPassword }">
+              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, copyPassword: newGeneratedPassword }">
             </ng-template>
           </div>
         </fs-label-field>
@@ -28,13 +34,24 @@
             <ng-template
               matSuffix
               [ngTemplateOutlet]="passwordActionsTemplate"
-              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, password: newCustomPassword }">
+              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, copyPassword: newCustomPassword }">
             </ng-template>
         </mat-form-field>
       </div>
 
-      <mat-slide-toggle color="primary" [(ngModel)]="emailPassword" name="email_password">Email {{ password ? 'newly generated' : 'customized' }} password to {{ email }}</mat-slide-toggle>
-      <mat-slide-toggle color="primary" [(ngModel)]="changePassword" name="change_password">After sign-in force user to create new password</mat-slide-toggle>
+      <mat-slide-toggle
+        [(ngModel)]="emailPassword"
+        color="primary"
+        name="email_password">
+        Email {{ password ? 'newly generated' : 'customized' }} password to {{ email }}
+      </mat-slide-toggle>
+
+      <mat-slide-toggle
+        [(ngModel)]="changePassword"
+        color="primary"
+        name="change_password">
+        After sign-in force user to create new password
+      </mat-slide-toggle>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
@@ -43,7 +60,15 @@
   </mat-dialog-actions>
 </form>
 
-<ng-template #passwordActionsTemplate let-obfuscate="obfuscate" let-password="password">
-  <mat-icon (click)="shouldObfuscatePassword = !shouldObfuscatePassword" *ngIf="!shouldObfuscatePassword">visibility</mat-icon>
-  <mat-icon (click)="shouldObfuscatePassword = !shouldObfuscatePassword;clipboard()" *ngIf="shouldObfuscatePassword" ngxClipboard [cbContent]="password">visibility_off</mat-icon>
+<ng-template #passwordActionsTemplate let-obfuscate="obfuscate" let-copyPassword="copyPassword">
+  <ng-container *ngIf="obfuscate; then visiblePasswordTemplate; else unvisiblePasswordTemplate "></ng-container>
+
+  <ng-template #visiblePasswordTemplate>
+    <mat-icon (click)="toggleShouldObfuscatePassword()"> visibility </mat-icon>
+  </ng-template>
+
+  <ng-template #unvisiblePasswordTemplate>
+    <mat-icon (click)="toggleShouldObfuscatePassword()">visibility_off</mat-icon>
+    <mat-icon (click)="clipboard()" ngxClipboard [cbContent]="copyPassword"> file_copy </mat-icon>
+  </ng-template>
 </ng-template>
