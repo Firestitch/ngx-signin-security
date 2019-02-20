@@ -7,13 +7,13 @@ import { FsPasswordService } from '@firestitch/password';
 import { format } from '@firestitch/date';
 
 import { Password } from '../../interfaces/password';
-import { FsSigninSecurityResetComponent } from '../fs-signin-security-reset/fs-signin-security-reset.component';
+import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
 
 
 @Component({
   selector: 'fs-signin-security',
-  templateUrl: './fs-signin-security.component.html',
-  styleUrls: [ './fs-signin-security.component.scss' ],
+  templateUrl: './security.component.html',
+  styleUrls: [ './security.component.scss' ],
 })
 export class FsSigninSecurityComponent implements OnInit {
 

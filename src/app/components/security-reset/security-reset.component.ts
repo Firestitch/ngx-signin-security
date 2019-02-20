@@ -2,13 +2,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { FsMessage } from '@firestitch/message';
-import { guid } from '@firestitch/common/util';
+import { guid } from '@firestitch/common';
 
 
 @Component({
   selector: 'fs-signin-security-reset',
-  templateUrl: './fs-signin-security-reset.component.html',
-  styleUrls: ['./fs-signin-security-reset.component.scss']
+  templateUrl: './security-reset.component.html',
+  styleUrls: ['./security-reset.component.scss']
 })
 export class FsSigninSecurityResetComponent implements OnInit {
 

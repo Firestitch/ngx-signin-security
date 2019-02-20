@@ -1,5 +1,3 @@
-import './styles.scss';
-
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,14 +9,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { FsExampleModule } from '@firestitch/example';
 import { FsPasswordModule } from '@firestitch/password';
 import { FsMessageModule } from '@firestitch/message';
-
-import { FsSigninSecurityModule } from 'fs-signin-security';
+import { FsSigninSecurityModule } from '@firestitch/signin-security';
 
 import { AppMaterialModule } from './material.module';
-import {
-ChangeComponent,
-ResetComponent,
-ExamplesComponent } from './components';
+import { ChangeComponent, ExamplesComponent, ResetComponent } from './components';
 import { AppComponent } from './app.component';
 
 
@@ -27,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     FsSigninSecurityModule.forRoot(),
@@ -40,16 +34,14 @@ const routes: Routes = [
     FsExampleModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
-  entryComponents: [
-  ],
+  entryComponents: [],
   declarations: [
     AppComponent,
     ExamplesComponent,
     ChangeComponent,
     ResetComponent
   ],
-  providers: [
-  ],
+  providers: [],
 })
 export class PlaygroundModule {
 }

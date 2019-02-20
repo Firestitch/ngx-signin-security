@@ -20,10 +20,8 @@ import { FsMessageModule } from '@firestitch/message';
 import { FsDateModule } from '@firestitch/date';
 import { FsLabelModule } from '@firestitch/label';
 
-import { FsSigninSecurityComponent } from './components/fs-signin-security/fs-signin-security.component';
-import {
-  FsSigninSecurityResetComponent
-} from './components/fs-signin-security-reset/fs-signin-security-reset.component';
+import { FsSigninSecurityComponent } from './components/security/security.component';
+import { FsSigninSecurityResetComponent } from './components/security-reset/security-reset.component';
 
 
 @NgModule({
