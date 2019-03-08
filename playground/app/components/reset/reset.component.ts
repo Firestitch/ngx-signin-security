@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'reset',
@@ -12,7 +11,7 @@ export class ResetComponent {
 
   public account = {
     email: 'john_doe@gmail.com',
-    login_date: moment()
+    login_date: new Date()
   };
 
   public resetPassword($event) {

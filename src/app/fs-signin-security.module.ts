@@ -12,8 +12,6 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 
-import { ClipboardModule } from 'ngx-clipboard';
-
 import { FsPasswordModule } from '@firestitch/password';
 import { FsFormModule } from '@firestitch/form';
 import { FsMessageModule } from '@firestitch/message';
@@ -29,7 +27,6 @@ import { FsSigninSecurityResetComponent } from './components/security-reset/secu
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    ClipboardModule,
 
     MatButtonModule,
     MatDialogModule,

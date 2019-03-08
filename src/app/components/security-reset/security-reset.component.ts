@@ -64,10 +64,6 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.dialogRef.close(data);
   }
 
-  public clipboard() {
-    this.fsMessage.success(`Copied to clipboard`);
-  }
-
   private getCurrentPassword() {
     return this.password ? this.newGeneratedPassword : this.newCustomPassword;
   }
