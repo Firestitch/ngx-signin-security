@@ -50,7 +50,7 @@ export class FsSigninSecurityComponent implements OnInit {
       enableCurrentPassword: this.enableCurrentPassword,
       buttons: [
         {
-          label: 'UPDATE PASSWORD',
+          label: 'CHANGE PASSWORD',
           action: 'submit',
           color: 'primary'
         },
