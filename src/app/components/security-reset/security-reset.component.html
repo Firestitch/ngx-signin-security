@@ -19,6 +19,7 @@
               [ngTemplateOutlet]="passwordActionsTemplate"
               [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, copyPassword: newGeneratedPassword }">
             </ng-template>
+            <mat-icon ngxClipboard [cbContent]="newGeneratedPassword">content_copy</mat-icon>
           </div>
         </fs-label-field>
 
