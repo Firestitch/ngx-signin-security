@@ -24,6 +24,7 @@ export class FsSigninSecurityResetComponent implements OnInit {
   public email = null;
   public minLength = 6;
   public passwordMask = null;
+  public showCopyIcon = false;
 
   constructor(
     private dialogRef: MatDialogRef<FsSigninSecurityResetComponent>,
@@ -38,6 +39,7 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.password = this.data.resetPasswordOptions.password;
     this.changePassword = this.data.resetPasswordOptions.changePassword;
     this.emailPassword = this.data.resetPasswordOptions.emailPassword;
+    this.showCopyIcon = this.data.showCopyIcon;
 
     this.passwordMask = this.generateMask(this.minLength, '*');
     this.generatePassword();

@@ -22,6 +22,7 @@ export class FsSigninSecurityComponent implements OnInit {
   @Input() public passwordBehavior: 'reset' | 'change' = 'change';
   @Input() public enableCurrentPassword = true;
   @Input() public minLength = 6;
+  @Input() public showCopyIcon = false;
 
   @Input() public resetPasswordOptions = {
     password: true,
@@ -76,7 +77,8 @@ export class FsSigninSecurityComponent implements OnInit {
       data: {
         email: this.email,
         minLength: this.minLength,
-        resetPasswordOptions: this.resetPasswordOptions
+        resetPasswordOptions: this.resetPasswordOptions,
+        showCopyIcon: this.showCopyIcon
       }
     });
 

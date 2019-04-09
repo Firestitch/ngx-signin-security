@@ -1,6 +1,7 @@
 <fs-signin-security
     [email]="account.email"
     [lastSignIn]="account.login_date"
+    [showCopyIcon]="true"
     passwordBehavior="reset"
     (resetPassword)="resetPassword($event)">
 </fs-signin-security>
