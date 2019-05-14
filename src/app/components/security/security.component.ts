@@ -8,6 +8,7 @@ import { format } from '@firestitch/date';
 
 import { Password } from '../../interfaces/password';
 import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
+import { PasswordBehavior } from '../../types/password-behavior.enum';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class FsSigninSecurityComponent implements OnInit {
 
   @Input() public email: string = null;
   @Input() public lastSignIn: any = null;
-  @Input() public passwordBehavior: 'reset' | 'change' = 'change';
+  @Input() public passwordBehavior: PasswordBehavior = PasswordBehavior.Change;
   @Input() public enableCurrentPassword = true;
   @Input() public minLength = 6;
   @Input() public showCopyIcon = false;

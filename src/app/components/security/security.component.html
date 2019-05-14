@@ -7,6 +7,7 @@
     <fs-label><mat-icon inline="true">vpn_key</mat-icon> Password</fs-label>
     <a *ngIf="passwordBehavior === 'change'" (click)="onChangePassword()">Change Password</a>
     <a *ngIf="passwordBehavior === 'reset'" (click)="onResetPassword()">Reset Password</a>
+    <span *ngIf="passwordBehavior === 'deleted'">Account deleted</span>
   </fs-label-field>
 </div>
 
