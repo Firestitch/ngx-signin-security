@@ -1,5 +1,6 @@
 export const enum PasswordBehavior {
   Reset = 'reset',
   Change = 'change',
-  Deleted = 'deleted'
+  Deleted = 'deleted',
+  None = 'none'
 }
