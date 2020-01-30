@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { of } from 'rxjs';
 
@@ -66,7 +66,7 @@ export class FsSigninSecurityComponent implements OnInit {
         const result: Password = { current_password: oldPassword, new_password: newPassword };
         return of(result);
       }
-    }).subscribe(response => {
+    }).subscribe((response: any) => {
       if (response.action === 'submit') {
         this.changePassword.emit(response.result);
       }
