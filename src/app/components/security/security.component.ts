@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { of } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
 
 import { FsPasswordService } from '@firestitch/password';
 import { format } from '@firestitch/date';
@@ -9,6 +10,7 @@ import { format } from '@firestitch/date';
 import { Password } from '../../interfaces/password';
 import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
 import { PasswordBehavior } from '../../types/password-behavior.enum';
+import { CaseService } from './../../services/case.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { PasswordBehavior } from '../../types/password-behavior.enum';
   templateUrl: './security.component.html',
   styleUrls: [ './security.component.scss' ],
 })
-export class FsSigninSecurityComponent implements OnInit {
+export class FsSigninSecurityComponent implements OnInit, OnDestroy {
 
   @Input() public email: string = null;
   @Input() public lastSignIn: any = null;
@@ -36,9 +38,12 @@ export class FsSigninSecurityComponent implements OnInit {
 
   public date = null;
 
+  private _destroy$ = new Subject();
+
   constructor(
     private fsPassword: FsPasswordService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _caseService: CaseService
   ) { }
 
   public ngOnInit() {
@@ -52,25 +57,31 @@ export class FsSigninSecurityComponent implements OnInit {
       enableCurrentPassword: this.enableCurrentPassword,
       buttons: [
         {
-          label: 'CHANGE PASSWORD',
+          label: 'Change Password',
           action: 'submit',
           color: 'primary'
         },
         {
-          label: 'CANCEL',
+          label: 'Cancel',
           action: 'cancel'
         }
       ],
       exclude: [],
       submit: (newPassword, oldPassword) => {
-        const result: Password = { current_password: oldPassword, new_password: newPassword };
+        const result: Password = { currentPassword: oldPassword, newPassword: newPassword };
         return of(result);
       }
-    }).subscribe((response: any) => {
-      if (response.action === 'submit') {
-        this.changePassword.emit(response.result);
-      }
-    });
+    })
+      .pipe(
+        takeUntil(this._destroy$)
+      )
+      .subscribe((response: any) => {
+        if (response.action === 'submit') {
+          this.changePassword.emit(this._caseService.output(response.result));
+        }
+      }, () => {
+
+      });
   }
 
   public onResetPassword() {
@@ -83,11 +94,19 @@ export class FsSigninSecurityComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(response => {
-      if (response) {
-        this.resetPassword.emit(response);
-      }
-    });
+    dialogRef.afterClosed()
+      .pipe(
+        takeUntil(this._destroy$)
+      )
+      .subscribe(response => {
+        if (response) {
+          this.resetPassword.emit(this._caseService.output(response));
+        }
+      });
   }
 
+  public ngOnDestroy() {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
 }

@@ -1,3 +1,4 @@
+import { FS_SIGNIN_SECURITY_CONFIG } from './injectors/singin-security-config.injector';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { FsLabelModule } from '@firestitch/label';
 
 import { FsSigninSecurityComponent } from './components/security/security.component';
 import { FsSigninSecurityResetComponent } from './components/security-reset/security-reset.component';
+import { FsSigninSecurityConfig } from './interfaces';
 
 
 @NgModule({
@@ -52,14 +54,14 @@ import { FsSigninSecurityResetComponent } from './components/security-reset/secu
     FsSigninSecurityComponent,
     FsSigninSecurityResetComponent
   ],
-  providers: [
-  ],
 })
 export class FsSigninSecurityModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(config: FsSigninSecurityConfig): ModuleWithProviders {
     return {
       ngModule: FsSigninSecurityModule,
-      providers: []
+      providers: [
+        { provide: FS_SIGNIN_SECURITY_CONFIG, useValue: config || {} }
+      ]
     };
   }
 }

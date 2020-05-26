@@ -5,3 +5,8 @@
     passwordBehavior="reset"
     (resetPassword)="resetPassword($event)">
 </fs-signin-security>
+
+<fieldset *ngIf="data">
+  <legend>Password</legend>
+  {{data|json}}
+</fieldset>

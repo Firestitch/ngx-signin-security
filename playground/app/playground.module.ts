@@ -24,7 +24,9 @@ const routes: Routes = [
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    FsSigninSecurityModule.forRoot(),
+    FsSigninSecurityModule.forRoot({
+      case: 'snake'
+    }),
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,

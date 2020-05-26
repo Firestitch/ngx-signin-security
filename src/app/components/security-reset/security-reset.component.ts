@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { FsMessage } from '@firestitch/message';
 import { guid } from '@firestitch/common';
+import * as _snakecaseKeys from 'snakecase-keys';
+import * as _camelcaseKeys from 'camelcase-keys';
 
 
 @Component({
@@ -28,8 +29,7 @@ export class FsSigninSecurityResetComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<FsSigninSecurityResetComponent>,
-    private fsMessage: FsMessage,
-    @Inject(MAT_DIALOG_DATA) public data
+    @Inject(MAT_DIALOG_DATA) public data,
   ) { }
 
   public ngOnInit() {
@@ -57,8 +57,8 @@ export class FsSigninSecurityResetComponent implements OnInit {
 
     this.close({
       password: this.getCurrentPassword(),
-      email_password: this.emailPassword,
-      change_password: this.changePassword
+      emailPassword: this.emailPassword,
+      changePassword: this.changePassword
     });
   }
 

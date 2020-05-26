@@ -1,6 +1,11 @@
 <fs-signin-security
     [email]="account.email"
-    [lastSignIn]="account.login_date"
+    [lastSignIn]="account.loginDate"
     passwordBehavior="change"
     (changePassword)="changePassword($event)">
 </fs-signin-security>
+
+<fieldset *ngIf="data">
+  <legend>Password</legend>
+  {{data|json}}
+</fieldset>

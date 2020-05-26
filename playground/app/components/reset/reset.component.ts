@@ -7,15 +7,16 @@ import { Component } from '@angular/core';
 })
 export class ResetComponent {
 
+  public data;
   constructor() { }
 
   public account = {
     email: 'john_doe@gmail.com',
-    login_date: new Date()
+    loginDate: new Date()
   };
 
   public resetPassword($event) {
-    console.log($event);
+    this.data = $event;
   }
 
 }

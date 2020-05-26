@@ -7,13 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ChangeComponent {
 
+  public data;
+
   public account = {
     email: 'john_doe@gmail.com',
-    login_date: new Date()
+    loginDate: new Date()
   };
 
   public changePassword($event) {
-    console.log($event);
+    this.data = $event;
   }
 
 }

@@ -2,7 +2,7 @@
   "name": "@firestitch/signin-security",
   "title": "Sign-In Security",
   "description": "@firestitch/signin-security",
-  "version": "8.0.0",
+  "version": "8.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-signin-security"
@@ -56,8 +56,8 @@
     "@firestitch/label": "^8.0.0",
     "@firestitch/menu": "^7.0.9",
     "@firestitch/message": "^8.1.0",
-    "@firestitch/password": "^8.1.0",
-    "@firestitch/prompt": "^8.3.0",
+    "@firestitch/password": "^8.1.1",
+    "@firestitch/prompt": "^8.4.2",
     "codelyzer": "^5.2.1",
     "cpx": "^1.5.0",
     "date-fns": "2.9.0",
@@ -76,7 +76,9 @@
     "typescript": "^3.5.3",
     "webpack": "^4.41.5",
     "webpack-dev-server": "^3.10.1",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "camelcase-keys": "^6.2.1",
+    "snakecase-keys": "^3.1.2"
   },
   "engines": {
     "node": ">=6.0.0"
