@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FsExampleModule } from '@firestitch/example';
 import { FsPasswordModule } from '@firestitch/password';
 import { FsMessageModule } from '@firestitch/message';
+import { FsDialogModule } from '@firestitch/dialog';
 import { FsSigninSecurityModule } from '@firestitch/signin-security';
 
 import { AppMaterialModule } from './material.module';
@@ -30,6 +31,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
+    FsDialogModule.forRoot(),
     FsMessageModule.forRoot(),
     FsPasswordModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),

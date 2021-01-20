@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { guid } from '@firestitch/common';
 import * as _snakecaseKeys from 'snakecase-keys';
 import * as _camelcaseKeys from 'camelcase-keys';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -36,9 +37,9 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.email = this.data.email;
     this.minLength = this.data.minLength;
 
-    this.password = this.data.resetPasswordOptions.password;
-    this.changePassword = this.data.resetPasswordOptions.changePassword;
-    this.emailPassword = this.data.resetPasswordOptions.emailPassword;
+    this.password = this.data.password;
+    this.changePassword = this.data.changePassword;
+    this.emailPassword = this.data.emailPassword;
     this.showCopyIcon = this.data.showCopyIcon;
 
     this.passwordMask = this.generateMask(this.minLength, '*');
@@ -53,13 +54,17 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.shouldObfuscatePassword = !this.shouldObfuscatePassword;
   }
 
-  public save() {
-
-    this.close({
+  public save = () => {
+    return this.data.resetPassword({
       password: this.getCurrentPassword(),
       emailPassword: this.emailPassword,
       changePassword: this.changePassword
-    });
+    })
+      .pipe(
+        tap(() => {
+          this.dialogRef.close();
+        }),
+      );
   }
 
   public close(data = null) {

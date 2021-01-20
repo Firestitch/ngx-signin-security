@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angu
 import { MatDialog } from '@angular/material/dialog';
 
 import { takeUntil } from 'rxjs/operators';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject, throwError } from 'rxjs';
 
 import { FsPasswordService } from '@firestitch/password';
 import { format } from '@firestitch/date';
@@ -33,8 +33,12 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
     emailPassword: true
   };
 
-  @Output() public resetPassword = new EventEmitter<Password>();
-  @Output() public changePassword = new EventEmitter<Password>();
+  @Input() public changePassword: (password: Password) => Observable<any>;
+  @Input() public resetPassword: (config: {
+    password: string,
+    emailPassword: boolean,
+    changePassword: boolean,
+  }) => Observable<any>;
 
   public date = null;
 
@@ -51,7 +55,6 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   }
 
   public onChangePassword() {
-
     this.fsPassword.open({
       minLength: this.minLength,
       enableCurrentPassword: this.enableCurrentPassword,
@@ -66,22 +69,19 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
           action: 'cancel'
         }
       ],
+      width: '400px',
       exclude: [],
       submit: (newPassword, oldPassword) => {
-        const result: Password = { currentPassword: oldPassword, newPassword: newPassword };
-        return of(result);
+
+        const result: Password = {
+          currentPassword: oldPassword,
+          newPassword: newPassword,
+        };
+
+        return this.changePassword(this._caseService.output(result));
       }
     })
-      .pipe(
-        takeUntil(this._destroy$)
-      )
-      .subscribe((response: any) => {
-        if (response.action === 'submit') {
-          this.changePassword.emit(this._caseService.output(response.result));
-        }
-      }, () => {
-
-      });
+      .subscribe();
   }
 
   public onResetPassword() {
@@ -89,9 +89,11 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
       data: {
         email: this.email,
         minLength: this.minLength,
-        resetPasswordOptions: this.resetPasswordOptions,
-        showCopyIcon: this.showCopyIcon
-      }
+        showCopyIcon: this.showCopyIcon,
+        resetPassword: this.resetPassword,
+        ...this.resetPasswordOptions,
+      },
+      width: '500px',
     });
 
     dialogRef.afterClosed()
@@ -100,7 +102,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
       )
       .subscribe(response => {
         if (response) {
-          this.resetPassword.emit(this._caseService.output(response));
+
         }
       });
   }

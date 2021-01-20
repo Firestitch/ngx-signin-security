@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { of, throwError, timer } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -14,8 +16,9 @@ export class ChangeComponent {
     loginDate: new Date()
   };
 
-  public changePassword($event) {
+  public changePassword = ($event) => {
     this.data = $event;
+    return timer(1000);
   }
 
 }

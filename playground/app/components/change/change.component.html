@@ -2,7 +2,7 @@
     [email]="account.email"
     [lastSignIn]="account.loginDate"
     passwordBehavior="change"
-    (changePassword)="changePassword($event)">
+    [changePassword]="changePassword">
 </fs-signin-security>
 
 <fieldset *ngIf="data">

@@ -3,7 +3,7 @@
     [lastSignIn]="account.loginDate"
     [showCopyIcon]="true"
     passwordBehavior="reset"
-    (resetPassword)="resetPassword($event)">
+    [resetPassword]="resetPassword">
 </fs-signin-security>
 
 <fieldset *ngIf="data">

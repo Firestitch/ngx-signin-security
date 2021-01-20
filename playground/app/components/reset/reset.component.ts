@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -15,8 +17,12 @@ export class ResetComponent {
     loginDate: new Date()
   };
 
-  public resetPassword($event) {
+  public resetPassword = ($event) => {
     this.data = $event;
+    return of(true)
+      .pipe(
+        delay(1000),
+      );
   }
 
 }
