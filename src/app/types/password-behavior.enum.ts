@@ -1,4 +1,4 @@
-export const enum PasswordBehavior {
+export enum PasswordBehavior {
   Reset = 'reset',
   Change = 'change',
   Deleted = 'deleted',
