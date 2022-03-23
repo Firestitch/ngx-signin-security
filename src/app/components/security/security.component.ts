@@ -58,6 +58,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
     this.fsPassword.open({
       minLength: this.minLength,
       enableCurrentPassword: this.enableCurrentPassword,
+      strength: true,
       buttons: [
         {
           label: 'Change Password',
@@ -72,7 +73,6 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
       width: '400px',
       exclude: [],
       submit: (newPassword, oldPassword) => {
-
         const result: Password = {
           currentPassword: oldPassword,
           newPassword: newPassword,
