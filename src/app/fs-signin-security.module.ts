@@ -56,7 +56,7 @@ import { FsSigninSecurityConfig } from './interfaces';
   ],
 })
 export class FsSigninSecurityModule {
-  static forRoot(config: FsSigninSecurityConfig): ModuleWithProviders {
+  static forRoot(config: FsSigninSecurityConfig): ModuleWithProviders<FsSigninSecurityModule> {
     return {
       ngModule: FsSigninSecurityModule,
       providers: [
