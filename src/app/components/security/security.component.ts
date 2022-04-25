@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { takeUntil } from 'rxjs/operators';
-import { Observable, of, Subject, throwError } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { FsPasswordService } from '@firestitch/password';
 import { format } from '@firestitch/date';
@@ -10,7 +10,6 @@ import { format } from '@firestitch/date';
 import { Password } from '../../interfaces/password';
 import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
 import { PasswordBehavior } from '../../types/password-behavior.enum';
-import { CaseService } from './../../services/case.service';
 
 
 @Component({
@@ -47,7 +46,6 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   constructor(
     private fsPassword: FsPasswordService,
     private dialog: MatDialog,
-    private _caseService: CaseService
   ) { }
 
   public ngOnInit() {
@@ -78,7 +76,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
           newPassword: newPassword,
         };
 
-        return this.changePassword(this._caseService.output(result));
+        return this.changePassword(result);
       }
     })
       .subscribe();

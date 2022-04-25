@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 
@@ -19,6 +19,7 @@ export class ResetComponent {
 
   public resetPassword = ($event) => {
     this.data = $event;
+
     return of(true)
       .pipe(
         delay(1000),
