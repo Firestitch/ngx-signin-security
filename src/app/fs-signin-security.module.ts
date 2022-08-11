@@ -11,13 +11,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { ClipboardModule } from 'ngx-clipboard';
-
 import { FsPasswordModule } from '@firestitch/password';
 import { FsFormModule } from '@firestitch/form';
 import { FsMessageModule } from '@firestitch/message';
 import { FsDateModule } from '@firestitch/date';
 import { FsLabelModule } from '@firestitch/label';
+import { FsClipboardModule } from '@firestitch/clipboard';
 
 import { FsSigninSecurityComponent } from './components/security/security.component';
 import { FsSigninSecurityResetComponent } from './components/security-reset/security-reset.component';
@@ -29,7 +28,6 @@ import { FsSigninSecurityConfig } from './interfaces';
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    ClipboardModule,
 
     MatButtonModule,
     MatDialogModule,
@@ -42,7 +40,8 @@ import { FsSigninSecurityConfig } from './interfaces';
     FsMessageModule,
     FsPasswordModule,
     FsDateModule,
-    FsLabelModule
+    FsLabelModule,
+    FsClipboardModule,
   ],
   exports: [
     FsSigninSecurityComponent,

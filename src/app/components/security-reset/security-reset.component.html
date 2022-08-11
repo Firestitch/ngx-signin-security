@@ -17,9 +17,12 @@
             <span>{{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}</span>
             <ng-template
               [ngTemplateOutlet]="passwordActionsTemplate"
-              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, copyPassword: newGeneratedPassword }">
+              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
             </ng-template>
-            <mat-icon *ngIf="!shouldObfuscatePassword || showCopyIcon" ngxClipboard [cbContent]="newGeneratedPassword">content_copy</mat-icon>
+            <fs-clipboard-button
+              *ngIf="!shouldObfuscatePassword || showCopyIcon"
+              [content]="newGeneratedPassword">
+            </fs-clipboard-button>
           </div>
         </fs-label-field>
 
@@ -35,7 +38,7 @@
             <ng-template
               matSuffix
               [ngTemplateOutlet]="passwordActionsTemplate"
-              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword, copyPassword: newCustomPassword }">
+              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
             </ng-template>
         </mat-form-field>
       </div>
@@ -61,7 +64,7 @@
   </mat-dialog-actions>
 </form>
 
-<ng-template #passwordActionsTemplate let-obfuscate="obfuscate" let-copyPassword="copyPassword">
+<ng-template #passwordActionsTemplate let-obfuscate="obfuscate">
   <ng-container *ngIf="obfuscate; then visiblePasswordTemplate; else unvisiblePasswordTemplate "></ng-container>
 
   <ng-template #visiblePasswordTemplate>
