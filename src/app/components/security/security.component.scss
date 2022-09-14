@@ -1,16 +1,17 @@
-:host {
-  a {
-    cursor: pointer;
-  }
+a {
+  cursor: pointer;
+}
 
-  ::ng-deep {
-    fs-label-field {
-      fs-label {
-        .mat-icon {
-          width: auto;
-          margin-right: 2px;
-        }
-      }
-    }
+mat-icon {
+  width: auto;
+  margin-right: 2px;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  
+  fs-label-field + fs-label-field {
+    margin-left: 20px;
   }
 }

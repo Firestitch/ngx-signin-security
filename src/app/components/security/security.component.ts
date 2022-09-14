@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { takeUntil } from 'rxjs/operators';
@@ -16,6 +16,7 @@ import { PasswordBehavior } from '../../types/password-behavior.enum';
   selector: 'fs-signin-security',
   templateUrl: './security.component.html',
   styleUrls: [ './security.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsSigninSecurityComponent implements OnInit, OnDestroy {
 
@@ -83,7 +84,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   }
 
   public onResetPassword() {
-    const dialogRef = this.dialog.open(FsSigninSecurityResetComponent, {
+    this.dialog.open(FsSigninSecurityResetComponent, {
       data: {
         email: this.email,
         minLength: this.minLength,
@@ -93,16 +94,6 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
       },
       width: '500px',
     });
-
-    dialogRef.afterClosed()
-      .pipe(
-        takeUntil(this._destroy$)
-      )
-      .subscribe(response => {
-        if (response) {
-
-        }
-      });
   }
 
   public ngOnDestroy() {

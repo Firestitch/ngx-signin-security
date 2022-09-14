@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutGap="20px">
+<div class="fields">
   <fs-label-field>
     <fs-label><mat-icon inline="true">email</mat-icon> Email</fs-label>
     <ng-container *ngIf="email">{{ email }}</ng-container>
@@ -10,9 +10,8 @@
     <a *ngIf="passwordBehavior === 'reset'" (click)="onResetPassword()">Reset Password</a>
     <span *ngIf="passwordBehavior === 'deleted'">Account deleted</span>
   </fs-label-field>
+  <fs-label-field>
+    <fs-label>Last Sign-In</fs-label>
+    {{ date }}
+  </fs-label-field>
 </div>
-
-<fs-label-field>
-  <fs-label>Last Sign-In</fs-label>
-  {{ date }}
-</fs-label-field>
