@@ -11,7 +11,10 @@ mat-icon {
   display: flex;
   flex-wrap: wrap;
   
-  fs-label-field + fs-label-field {
-    margin-left: 20px;
+  fs-label-field {
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
