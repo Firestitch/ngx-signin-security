@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { of, throwError, timer } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { PasswordBehavior } from '@firestitch/signin-security';
+import { timer } from 'rxjs';
 
 
 @Component({
@@ -10,6 +10,7 @@ import { delay } from 'rxjs/operators';
 export class ChangeComponent {
 
   public data;
+  public PasswordBehavior = PasswordBehavior;
 
   public account = {
     email: 'john_doe@gmail.com',

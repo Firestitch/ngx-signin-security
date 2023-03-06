@@ -1,7 +1,7 @@
 <fs-signin-security
     [email]="account.email"
     [lastSignIn]="account.loginDate"
-    passwordBehavior="change"
+    [passwordBehavior]="PasswordBehavior.Change"
     [changePassword]="changePassword">
 </fs-signin-security>
 

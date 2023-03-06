@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PasswordBehavior } from '@firestitch/signin-security';
 import { of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -10,6 +11,7 @@ import { delay } from 'rxjs/operators';
 export class ResetComponent {
 
   public data;
+  public PasswordBehavior = PasswordBehavior;
   constructor() { }
 
   public account = {
