@@ -70,7 +70,7 @@
     "cpx": "^1.5.0",
     "date-fns": "2.9.0",
     "date-fns-tz": "^1.0.9",
-    "highlight.js": "^9.18.0",
+    "highlight.js": "^10.4.1",
     "lodash-es": "^4.17.15",
     "ng-packagr": "^12.2.7",
     "ngx-highlightjs": "^6.1.2",
