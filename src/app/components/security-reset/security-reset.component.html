@@ -27,14 +27,14 @@
         </fs-label-field>
 
         <mat-form-field *ngIf="!password" fxFlex>
+          <mat-label>Customized Password</mat-label>
           <input
-            matInput
-            [(ngModel)]="newCustomPassword"
-            [fsFormMinLength]="minLength"
-            [type]="shouldObfuscatePassword ? 'password' : 'text'"
-            placeholder="Customized Password"
-            [fsFormRequired]="true"
-            name="newCustomPassword">
+              matInput
+              [(ngModel)]="newCustomPassword"
+              [fsFormMinLength]="minLength"
+              [type]="shouldObfuscatePassword ? 'password' : 'text'"
+              [fsFormRequired]="true"
+              name="newCustomPassword">
             <ng-template
               matSuffix
               [ngTemplateOutlet]="passwordActionsTemplate"
