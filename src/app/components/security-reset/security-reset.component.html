@@ -1,7 +1,7 @@
 <form fsForm [submit]="save" #form="ngForm" [dirtySubmitButton]="false">
   <div mat-dialog-title>Reset Password</div>
   <mat-dialog-content>
-    <div fxLayout="column">
+    <div class="fs-column">
       <mat-slide-toggle
         [(ngModel)]="password"
         (ngModelChange)="generatePassword()"
@@ -13,7 +13,7 @@
       <div class="password">
         <fs-label-field *ngIf="password">
           <fs-label>Generated Password</fs-label>
-          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+          <div class="fs-row.gap-tiny">
             <span>{{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}</span>
             <ng-template
               [ngTemplateOutlet]="passwordActionsTemplate"
@@ -26,7 +26,7 @@
           </div>
         </fs-label-field>
 
-        <mat-form-field *ngIf="!password" fxFlex>
+        <mat-form-field *ngIf="!password">
           <mat-label>Customized Password</mat-label>
           <input
               matInput

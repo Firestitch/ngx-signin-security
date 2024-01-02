@@ -1,8 +1,6 @@
-import { FS_SIGNIN_SECURITY_CONFIG } from './injectors/singin-security-config.injector';
-import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -11,15 +9,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { FsPasswordModule } from '@firestitch/password';
-import { FsFormModule } from '@firestitch/form';
-import { FsMessageModule } from '@firestitch/message';
-import { FsDateModule } from '@firestitch/date';
-import { FsLabelModule } from '@firestitch/label';
 import { FsClipboardModule } from '@firestitch/clipboard';
+import { FsDateModule } from '@firestitch/date';
+import { FsFormModule } from '@firestitch/form';
+import { FsLabelModule } from '@firestitch/label';
+import { FsMessageModule } from '@firestitch/message';
+import { FsPasswordModule } from '@firestitch/password';
 
-import { FsSigninSecurityComponent } from './components/security/security.component';
 import { FsSigninSecurityResetComponent } from './components/security-reset/security-reset.component';
+import { FsSigninSecurityComponent } from './components/security/security.component';
+import { FS_SIGNIN_SECURITY_CONFIG } from './injectors/singin-security-config.injector';
 import { FsSigninSecurityConfig } from './interfaces';
 
 
@@ -27,7 +26,6 @@ import { FsSigninSecurityConfig } from './interfaces';
   imports: [
     CommonModule,
     FormsModule,
-    FlexLayoutModule,
 
     MatButtonModule,
     MatDialogModule,
@@ -47,11 +45,11 @@ import { FsSigninSecurityConfig } from './interfaces';
     FsSigninSecurityComponent,
   ],
   entryComponents: [
-    FsSigninSecurityResetComponent
+    FsSigninSecurityResetComponent,
   ],
   declarations: [
     FsSigninSecurityComponent,
-    FsSigninSecurityResetComponent
+    FsSigninSecurityResetComponent,
   ],
 })
 export class FsSigninSecurityModule {
@@ -59,8 +57,8 @@ export class FsSigninSecurityModule {
     return {
       ngModule: FsSigninSecurityModule,
       providers: [
-        { provide: FS_SIGNIN_SECURITY_CONFIG, useValue: config || {} }
-      ]
+        { provide: FS_SIGNIN_SECURITY_CONFIG, useValue: config || {} },
+      ],
     };
   }
 }

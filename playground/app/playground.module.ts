@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 
-import { ToastrModule } from 'ngx-toastr';
 
-import { FsExampleModule } from '@firestitch/example';
-import { FsPasswordModule } from '@firestitch/password';
-import { FsMessageModule } from '@firestitch/message';
 import { FsDialogModule } from '@firestitch/dialog';
+import { FsExampleModule } from '@firestitch/example';
+import { FsMessageModule } from '@firestitch/message';
+import { FsPasswordModule } from '@firestitch/password';
 import { FsSigninSecurityModule } from '@firestitch/signin-security';
 
-import { AppMaterialModule } from './material.module';
-import { ChangeComponent, ExamplesComponent, ResetComponent } from './components';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent } from './app.component';
+import { ChangeComponent, ExamplesComponent, ResetComponent } from './components';
+import { AppMaterialModule } from './material.module';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FsSigninSecurityModule.forRoot({
-      case: 'snake'
+      case: 'snake',
     }),
     BrowserAnimationsModule,
     AppMaterialModule,
@@ -43,7 +44,7 @@ const routes: Routes = [
     AppComponent,
     ExamplesComponent,
     ChangeComponent,
-    ResetComponent
+    ResetComponent,
   ],
   providers: [],
 })
