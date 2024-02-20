@@ -23,34 +23,29 @@ import { FsSigninSecurityConfig } from './interfaces';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-
-    MatButtonModule,
-    MatDialogModule,
-    MatIconModule,
-    MatInputModule,
-    MatTooltipModule,
-    MatSlideToggleModule,
-
-    FsFormModule,
-    FsMessageModule,
-    FsPasswordModule,
-    FsDateModule,
-    FsLabelModule,
-    FsClipboardModule,
-  ],
-  exports: [
-    FsSigninSecurityComponent,
-  ],
-  entryComponents: [
-    FsSigninSecurityResetComponent,
-  ],
-  declarations: [
-    FsSigninSecurityComponent,
-    FsSigninSecurityResetComponent,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatIconModule,
+        MatInputModule,
+        MatTooltipModule,
+        MatSlideToggleModule,
+        FsFormModule,
+        FsMessageModule,
+        FsPasswordModule,
+        FsDateModule,
+        FsLabelModule,
+        FsClipboardModule,
+    ],
+    exports: [
+        FsSigninSecurityComponent,
+    ],
+    declarations: [
+        FsSigninSecurityComponent,
+        FsSigninSecurityResetComponent,
+    ]
 })
 export class FsSigninSecurityModule {
   static forRoot(config: FsSigninSecurityConfig): ModuleWithProviders<FsSigninSecurityModule> {
