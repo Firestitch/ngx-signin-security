@@ -2,7 +2,7 @@
   "name": "@firestitch/signin-security",
   "title": "Sign-In Security",
   "description": "@firestitch/signin-security",
-  "version": "13.0.0",
+  "version": "13.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-signin-security"

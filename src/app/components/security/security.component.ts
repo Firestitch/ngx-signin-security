@@ -1,21 +1,20 @@
-import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 
-import { FsPasswordService } from '@firestitch/password';
 import { format } from '@firestitch/date';
+import { FsPasswordService } from '@firestitch/password';
 
 import { Password } from '../../interfaces/password';
-import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
 import { PasswordBehavior } from '../../types/password-behavior.enum';
+import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
 
 
 @Component({
   selector: 'fs-signin-security',
   templateUrl: './security.component.html',
-  styleUrls: [ './security.component.scss' ],
+  styleUrls: ['./security.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsSigninSecurityComponent implements OnInit, OnDestroy {
@@ -26,6 +25,8 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   @Input() public enableCurrentPassword = true;
   @Input() public minLength = 6;
   @Input() public showCopyIcon = false;
+  @Input()
+  public lastSignInLabel = 'Last Sign-In';
 
   @Input() public resetPasswordOptions = {
     password: true,

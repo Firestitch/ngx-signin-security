@@ -11,7 +11,7 @@
     <span *ngIf="passwordBehavior === 'deleted'">Account deleted</span>
   </fs-label-field>
   <fs-label-field>
-    <fs-label>Last Sign-In</fs-label>
+    <fs-label>{{ lastSignInLabel }}</fs-label>
     {{ date }}
   </fs-label-field>
 </div>
