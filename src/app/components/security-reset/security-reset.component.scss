@@ -13,5 +13,14 @@
         cursor: pointer;
       }
     }
+
+    mat-form-field.password-field {
+      .fs-form-message {
+        overflow: visible;
+        .fs-form-error {
+          white-space: nowrap;
+        }
+      }
+    }
   }
 }

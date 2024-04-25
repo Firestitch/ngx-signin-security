@@ -26,7 +26,7 @@
           </div>
         </fs-label-field>
 
-        <mat-form-field *ngIf="!password">
+        <mat-form-field *ngIf="!password" class="password-field">
           <mat-label>Customized Password</mat-label>
           <input
               matInput
@@ -44,9 +44,9 @@
       </div>
 
       <mat-slide-toggle
-        [(ngModel)]="emailPassword"
-        color="primary"
-        name="emailPassword">
+          [(ngModel)]="emailPassword"
+          color="primary"
+          name="emailPassword">
         Email {{ password ? 'newly generated' : 'customized' }} password to {{ email }}
       </mat-slide-toggle>
 
