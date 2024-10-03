@@ -37,7 +37,7 @@ const routes: Routes = [
         FsPasswordModule.forRoot(),
         ToastrModule.forRoot({ preventDuplicates: true }),
         FsExampleModule.forRoot(),
-        RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+        RouterModule.forRoot(routes, {}),
     ],
     declarations: [
         AppComponent,
