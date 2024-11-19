@@ -1,12 +1,23 @@
 :host {
   // For some reason dialog scroll behave strange with mat-slide component
+  mat-slide-toggle {
+    ::ng-deep {
+      .mdc-form-field {
+        justify-content: space-between;
+        width: 100%;
+        .mdc-label {
+          width: 100%;
+        }
+      }
+    }
+  }
   .mat-dialog-content {
     overflow: initial;
     padding-bottom: 10px;
   }
-  .password {
-    margin-left: 44px;
-  }
+  // .password {
+  //   margin-left: 44px;
+  // }
   ::ng-deep {
     mat-form-field, fs-label-field {
       mat-icon {

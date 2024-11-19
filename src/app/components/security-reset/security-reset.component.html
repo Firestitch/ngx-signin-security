@@ -3,6 +3,7 @@
   <mat-dialog-content>
     <div class="fs-column">
       <mat-slide-toggle
+        labelPosition="before"
         [(ngModel)]="password"
         (ngModelChange)="generatePassword()"
         color="primary"
@@ -44,6 +45,7 @@
       </div>
 
       <mat-slide-toggle
+          labelPosition="before"
           [(ngModel)]="emailPassword"
           color="primary"
           name="emailPassword">
@@ -51,9 +53,10 @@
       </mat-slide-toggle>
 
       <mat-slide-toggle
-        [(ngModel)]="changePassword"
-        color="primary"
-        name="change_password">
+          labelPosition="before"
+          [(ngModel)]="changePassword"
+          color="primary"
+          name="change_password">
         After sign-in force user to create new password
       </mat-slide-toggle>
     </div>
