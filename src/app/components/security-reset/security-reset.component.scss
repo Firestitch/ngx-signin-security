@@ -2,6 +2,9 @@
   // For some reason dialog scroll behave strange with mat-slide component
   mat-slide-toggle {
     ::ng-deep {
+      .mdc-switch {
+        height: 36px;
+      }
       .mdc-form-field {
         justify-content: space-between;
         width: 100%;
