@@ -1,14 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { guid } from '@firestitch/common';
+
 import { tap } from 'rxjs/operators';
 
 
 @Component({
   selector: 'fs-signin-security-reset',
   templateUrl: './security-reset.component.html',
-  styleUrls: ['./security-reset.component.scss']
+  styleUrls: ['./security-reset.component.scss'],
 })
 export class FsSigninSecurityResetComponent implements OnInit {
 
@@ -27,7 +29,7 @@ export class FsSigninSecurityResetComponent implements OnInit {
   public showCopyIcon = false;
 
   constructor(
-    private dialogRef: MatDialogRef<FsSigninSecurityResetComponent>,
+    private _dialogRef: MatDialogRef<FsSigninSecurityResetComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
   ) { }
 
@@ -40,12 +42,12 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.emailPassword = this.data.emailPassword;
     this.showCopyIcon = this.data.showCopyIcon;
 
-    this.passwordMask = this.generateMask(this.minLength, '*');
+    this.passwordMask = this._generateMask(this.minLength, '*');
     this.generatePassword();
   }
 
   public generatePassword() {
-    this.newGeneratedPassword = guid(this.generateMask(this.minLength, 'x'));
+    this.newGeneratedPassword = guid(this._generateMask(this.minLength, 'x'));
   }
 
   public toggleShouldObfuscatePassword() {
@@ -56,24 +58,24 @@ export class FsSigninSecurityResetComponent implements OnInit {
     return this.data.resetPassword({
       password: this.getCurrentPassword(),
       emailPassword: this.emailPassword,
-      changePassword: this.changePassword
+      changePassword: this.changePassword,
     })
       .pipe(
         tap(() => {
-          this.dialogRef.close();
+          this._dialogRef.close();
         }),
       );
-  }
+  };
 
   public close(data = null) {
-    this.dialogRef.close(data);
+    this._dialogRef.close(data);
   }
 
   private getCurrentPassword() {
     return this.password ? this.newGeneratedPassword : this.newCustomPassword;
   }
 
-  private generateMask(length, symbol) {
+  private _generateMask(length, symbol) {
     return symbol.repeat(length);
   }
 

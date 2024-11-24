@@ -1,39 +1,48 @@
-:host {
-  // For some reason dialog scroll behave strange with mat-slide component
-  mat-slide-toggle {
-    ::ng-deep {
-      .mdc-switch {
-        height: 36px;
-      }
-      .mdc-form-field {
-        justify-content: space-between;
-        width: 100%;
-        .mdc-label {
-          width: 100%;
-        }
-      }
-    }
-  }
-  .mat-dialog-content {
-    overflow: initial;
-    padding-bottom: 10px;
-  }
-  // .password {
-  //   margin-left: 44px;
-  // }
+.password-toggle {
   ::ng-deep {
-    mat-form-field, fs-label-field {
-      mat-icon {
-        cursor: pointer;
+    .mdc-form-field {
+      align-items: flex-start;
+
+      button {
+        margin-top: 10px;
       }
     }
+  }
+}
 
-    mat-form-field.password-field {
-      .fs-form-message {
-        overflow: visible;
-        .fs-form-error {
-          white-space: nowrap;
-        }
+mat-dialog-content {
+  overflow: initial;
+  max-width: 100%;
+}
+
+::ng-deep {
+  mat-form-field, fs-label-field {
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+
+  mat-form-field.password-field {
+    .fs-form-message {
+      overflow: visible;
+      .fs-form-error {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+mat-slide-toggle + mat-slide-toggle {
+  display: block;
+  margin-top: 10px;
+}
+
+
+:host {
+  ::ng-deep {
+    .mdc-form-field {
+      button {
+        margin-right: 10px;
       }
     }
   }

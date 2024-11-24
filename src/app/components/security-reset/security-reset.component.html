@@ -1,35 +1,46 @@
-<form fsForm [submit]="save" #form="ngForm" [dirtySubmitButton]="false">
-  <div mat-dialog-title>Reset Password</div>
+<form
+    fsForm
+    [submit]="save"
+    #form="ngForm"
+    [dirtySubmitButton]="false">
+  <div mat-dialog-title>
+    Reset Password
+  </div>
   <mat-dialog-content>
     <div class="fs-column">
       <mat-slide-toggle
-        labelPosition="before"
-        [(ngModel)]="password"
-        (ngModelChange)="generatePassword()"
-        color="primary"
-        name="password">
+          class="password-toggle"
+          [(ngModel)]="password"
+          (ngModelChange)="generatePassword()"
+          color="primary"
+          name="password">
         Automatically generate new password
-      </mat-slide-toggle>
-
-      <div class="password">
-        <fs-label-field *ngIf="password">
-          <fs-label>Generated Password</fs-label>
-          <div class="fs-row.gap-tiny">
-            <span>{{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}</span>
-            <ng-template
-              [ngTemplateOutlet]="passwordActionsTemplate"
-              [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
-            </ng-template>
-            <fs-clipboard-button
-              *ngIf="!shouldObfuscatePassword || showCopyIcon"
-              [content]="newGeneratedPassword">
-            </fs-clipboard-button>
-          </div>
-        </fs-label-field>
-
-        <mat-form-field *ngIf="!password" class="password-field">
-          <mat-label>Customized Password</mat-label>
-          <input
+        <div class="password">
+          <fs-label-field *ngIf="password">
+            <fs-label>
+              Generated Password
+            </fs-label>
+            <div class="fs-row.gap-tiny">
+              <span>
+                {{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}
+              </span>
+              <ng-template
+                [ngTemplateOutlet]="passwordActionsTemplate"
+                [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
+              </ng-template>
+              <fs-clipboard-button
+                *ngIf="!shouldObfuscatePassword || showCopyIcon"
+                [content]="newGeneratedPassword">
+              </fs-clipboard-button>
+            </div>
+          </fs-label-field>
+          <mat-form-field
+              *ngIf="!password"
+              class="password-field">
+            <mat-label>
+              Customized Password
+            </mat-label>
+            <input
               matInput
               [(ngModel)]="newCustomPassword"
               [fsFormMinLength]="minLength"
@@ -41,19 +52,16 @@
               [ngTemplateOutlet]="passwordActionsTemplate"
               [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
             </ng-template>
-        </mat-form-field>
-      </div>
-
+          </mat-form-field>
+        </div>
+      </mat-slide-toggle>
       <mat-slide-toggle
-          labelPosition="before"
           [(ngModel)]="emailPassword"
           color="primary"
           name="emailPassword">
         Email {{ password ? 'newly generated' : 'customized' }} password to {{ email }}
       </mat-slide-toggle>
-
       <mat-slide-toggle
-          labelPosition="before"
           [(ngModel)]="changePassword"
           color="primary"
           name="change_password">
@@ -62,19 +70,32 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button type="submit" color="primary">Reset Password</button>
-    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button
+        mat-button
+        type="submit"
+        color="primary">
+      Reset Password
+    </button>
+    <button
+        mat-button
+        mat-dialog-close
+        type="button">
+      Cancel
+    </button>
   </mat-dialog-actions>
 </form>
-
-<ng-template #passwordActionsTemplate let-obfuscate="obfuscate">
+<ng-template
+    #passwordActionsTemplate
+    let-obfuscate="obfuscate">
   <ng-container *ngIf="obfuscate; then visiblePasswordTemplate; else unvisiblePasswordTemplate "></ng-container>
-
   <ng-template #visiblePasswordTemplate>
-    <mat-icon (click)="toggleShouldObfuscatePassword()"> visibility </mat-icon>
+    <mat-icon (click)="toggleShouldObfuscatePassword()">
+      visibility
+    </mat-icon>
   </ng-template>
-
   <ng-template #unvisiblePasswordTemplate>
-    <mat-icon (click)="toggleShouldObfuscatePassword()">visibility_off</mat-icon>
+    <mat-icon (click)="toggleShouldObfuscatePassword()">
+      visibility_off
+    </mat-icon>
   </ng-template>
 </ng-template>

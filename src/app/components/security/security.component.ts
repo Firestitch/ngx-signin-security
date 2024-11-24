@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+
 import { MatDialog } from '@angular/material/dialog';
 
-import { Observable, Subject } from 'rxjs';
 
 import { format } from '@firestitch/date';
 import { FsPasswordService } from '@firestitch/password';
+
+import { Observable, Subject } from 'rxjs';
 
 import { Password } from '../../interfaces/password';
 import { PasswordBehavior } from '../../types/password-behavior.enum';
@@ -31,7 +33,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   @Input() public resetPasswordOptions = {
     password: true,
     changePassword: true,
-    emailPassword: true
+    emailPassword: true,
   };
 
   @Input() public changePassword: (password: Password) => Observable<any>;
@@ -63,12 +65,12 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
         {
           label: 'Change Password',
           action: 'submit',
-          color: 'primary'
+          color: 'primary',
         },
         {
           label: 'Cancel',
-          action: 'cancel'
-        }
+          action: 'cancel',
+        },
       ],
       width: '400px',
       exclude: [],
@@ -79,7 +81,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
         };
 
         return this.changePassword(result);
-      }
+      },
     })
       .subscribe();
   }
@@ -93,7 +95,6 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
         resetPassword: this.resetPassword,
         ...this.resetPasswordOptions,
       },
-      width: '500px',
     });
   }
 
