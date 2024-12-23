@@ -15,47 +15,48 @@
           color="primary"
           name="password">
         Automatically generate new password
-        <div class="password">
-          <fs-label-field *ngIf="password">
-            <fs-label>
-              Generated Password
-            </fs-label>
-            <div class="fs-row.gap-tiny">
-              <span>
-                {{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}
-              </span>
-              <ng-template
-                [ngTemplateOutlet]="passwordActionsTemplate"
-                [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
-              </ng-template>
-              <fs-clipboard-button
-                *ngIf="!shouldObfuscatePassword || showCopyIcon"
-                [content]="newGeneratedPassword"
-                (click)="copyPasswordClicked($event)">
-              </fs-clipboard-button>
-            </div>
-          </fs-label-field>
-          <mat-form-field
-              *ngIf="!password"
-              class="password-field">
-            <mat-label>
-              Customized Password
-            </mat-label>
-            <input
-              matInput
-              [(ngModel)]="newCustomPassword"
-              [fsFormMinLength]="minLength"
-              [type]="shouldObfuscatePassword ? 'password' : 'text'"
-              [fsFormRequired]="true"
-              name="newCustomPassword">
+      </mat-slide-toggle>
+
+      <div class="password">
+        <fs-label-field *ngIf="password">
+          <fs-label>
+            Generated Password
+          </fs-label>
+          <div class="fs-row.gap-tiny">
+            <span>
+              {{ shouldObfuscatePassword ? passwordMask : newGeneratedPassword }}
+            </span>
             <ng-template
-              matSuffix
               [ngTemplateOutlet]="passwordActionsTemplate"
               [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
             </ng-template>
-          </mat-form-field>
-        </div>
-      </mat-slide-toggle>
+            <fs-clipboard-button
+              *ngIf="!shouldObfuscatePassword || showCopyIcon"
+              [content]="newGeneratedPassword">
+            </fs-clipboard-button>
+          </div>
+        </fs-label-field>
+        <mat-form-field
+            *ngIf="!password"
+            class="password-field">
+          <mat-label>
+            Customized Password
+          </mat-label>
+          <input
+            matInput
+            [(ngModel)]="newCustomPassword"
+            [fsFormMinLength]="minLength"
+            [type]="shouldObfuscatePassword ? 'password' : 'text'"
+            [fsFormRequired]="true"
+            name="newCustomPassword">
+          <ng-template
+            matSuffix
+            [ngTemplateOutlet]="passwordActionsTemplate"
+            [ngTemplateOutletContext]="{ obfuscate: shouldObfuscatePassword }">
+          </ng-template>
+        </mat-form-field>
+      </div>
+
       <mat-slide-toggle
           [(ngModel)]="emailPassword"
           color="primary"

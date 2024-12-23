@@ -15,6 +15,10 @@ mat-dialog-content {
   max-width: 100%;
 }
 
+.password {
+  margin-left: 51px;
+}
+
 ::ng-deep {
   mat-form-field, fs-label-field {
     mat-icon {

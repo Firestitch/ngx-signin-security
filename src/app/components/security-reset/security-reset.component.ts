@@ -51,14 +51,7 @@ export class FsSigninSecurityResetComponent implements OnInit {
   }
 
   public toggleShouldObfuscatePassword($event) {
-    $event.stopPropagation();
-    $event.preventDefault();
     this.shouldObfuscatePassword = !this.shouldObfuscatePassword;
-  }
-
-  public copyPasswordClicked($event) {
-    $event.stopPropagation();
-    $event.preventDefault();
   }
 
   public save = () => {
