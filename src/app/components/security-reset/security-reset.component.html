@@ -30,7 +30,8 @@
               </ng-template>
               <fs-clipboard-button
                 *ngIf="!shouldObfuscatePassword || showCopyIcon"
-                [content]="newGeneratedPassword">
+                [content]="newGeneratedPassword"
+                (click)="copyPasswordClicked($event)">
               </fs-clipboard-button>
             </div>
           </fs-label-field>
@@ -87,14 +88,14 @@
 <ng-template
     #passwordActionsTemplate
     let-obfuscate="obfuscate">
-  <ng-container *ngIf="obfuscate; then visiblePasswordTemplate; else unvisiblePasswordTemplate "></ng-container>
+  <ng-container *ngIf="obfuscate; then visiblePasswordTemplate; else unvisiblePasswordTemplate"></ng-container>
   <ng-template #visiblePasswordTemplate>
-    <mat-icon (click)="toggleShouldObfuscatePassword()">
+    <mat-icon (click)="toggleShouldObfuscatePassword($event)">
       visibility
     </mat-icon>
   </ng-template>
   <ng-template #unvisiblePasswordTemplate>
-    <mat-icon (click)="toggleShouldObfuscatePassword()">
+    <mat-icon (click)="toggleShouldObfuscatePassword($event)">
       visibility_off
     </mat-icon>
   </ng-template>

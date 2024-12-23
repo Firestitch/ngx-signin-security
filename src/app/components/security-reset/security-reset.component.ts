@@ -50,8 +50,13 @@ export class FsSigninSecurityResetComponent implements OnInit {
     this.newGeneratedPassword = guid(this._generateMask(this.minLength, 'x'));
   }
 
-  public toggleShouldObfuscatePassword() {
+  public toggleShouldObfuscatePassword($event) {
+    $event.preventDefault();
     this.shouldObfuscatePassword = !this.shouldObfuscatePassword;
+  }
+
+  public copyPasswordClicked($event) {
+    $event.preventDefault();
   }
 
   public save = () => {
