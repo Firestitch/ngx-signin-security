@@ -28,7 +28,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   @Input() public minLength = 6;
   @Input() public showCopyIcon = false;
   @Input()
-  public lastSignInLabel = 'Last Sign-In';
+  public lastSignInLabel = 'Last sign in';
 
   @Input() public resetPasswordOptions = {
     password: true,

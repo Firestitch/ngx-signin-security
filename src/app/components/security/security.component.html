@@ -1,17 +1,43 @@
 <div class="fields">
   <fs-label-field>
-    <fs-label><mat-icon inline="true">email</mat-icon> Email</fs-label>
-    <ng-container *ngIf="email">{{ email }}</ng-container>
-    <ng-container *ngIf="!email">No Email</ng-container>
+    <fs-label>
+      <mat-icon inline="true">
+        email
+      </mat-icon>
+      Email
+    </fs-label>
+    <ng-container *ngIf="email">
+      {{ email }}
+    </ng-container>
+    <ng-container *ngIf="!email">
+      No email
+    </ng-container>
   </fs-label-field>
   <fs-label-field *ngIf="passwordBehavior !== 'none'">
-    <fs-label><mat-icon inline="true">vpn_key</mat-icon> Password</fs-label>
-    <a *ngIf="passwordBehavior === 'change'" (click)="onChangePassword()">Change Password</a>
-    <a *ngIf="passwordBehavior === 'reset'" (click)="onResetPassword()">Reset Password</a>
-    <span *ngIf="passwordBehavior === 'deleted'">Account deleted</span>
+    <fs-label>
+      <mat-icon inline="true">
+        vpn_key
+      </mat-icon>
+      Password
+    </fs-label>
+    <a
+        *ngIf="passwordBehavior === 'change'"
+        (click)="onChangePassword()">
+      Change password
+    </a>
+    <a
+        *ngIf="passwordBehavior === 'reset'"
+        (click)="onResetPassword()">
+      Reset password
+    </a>
+    <span *ngIf="passwordBehavior === 'deleted'">
+      Account deleted
+    </span>
   </fs-label-field>
   <fs-label-field>
-    <fs-label>{{ lastSignInLabel }}</fs-label>
+    <fs-label>
+      {{ lastSignInLabel }}
+    </fs-label>
     {{ date }}
   </fs-label-field>
 </div>
