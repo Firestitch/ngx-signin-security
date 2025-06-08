@@ -63,7 +63,7 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
       strength: true,
       buttons: [
         {
-          label: 'Change Password',
+          label: 'Change password',
           action: 'submit',
           color: 'primary',
         },

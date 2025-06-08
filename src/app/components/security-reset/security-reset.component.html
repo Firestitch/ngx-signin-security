@@ -4,7 +4,7 @@
     #form="ngForm"
     [dirtySubmitButton]="false">
   <div mat-dialog-title>
-    Reset Password
+    Reset password
   </div>
   <mat-dialog-content>
     <div class="fs-column">
@@ -16,11 +16,10 @@
           name="password">
         Automatically generate new password
       </mat-slide-toggle>
-
       <div class="password">
         <fs-label-field *ngIf="password">
           <fs-label>
-            Generated Password
+            Generated password
           </fs-label>
           <div class="fs-row.gap-tiny">
             <span>
@@ -40,7 +39,7 @@
             *ngIf="!password"
             class="password-field">
           <mat-label>
-            Customized Password
+            Customized password
           </mat-label>
           <input
             matInput
@@ -56,7 +55,6 @@
           </ng-template>
         </mat-form-field>
       </div>
-
       <mat-slide-toggle
           [(ngModel)]="emailPassword"
           color="primary"
@@ -76,7 +74,7 @@
         mat-button
         type="submit"
         color="primary">
-      Reset Password
+      Reset password
     </button>
     <button
         mat-button
