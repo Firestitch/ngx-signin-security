@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
@@ -44,6 +44,9 @@ import { MatIcon } from '@angular/material/icon';
     ],
 })
 export class FsSigninSecurityResetComponent implements OnInit {
+  private _dialogRef = inject<MatDialogRef<FsSigninSecurityResetComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+
 
   public password = false;
   public changePassword = false;
@@ -58,11 +61,6 @@ export class FsSigninSecurityResetComponent implements OnInit {
   public minLength = 6;
   public passwordMask = null;
   public showCopyIcon = false;
-
-  constructor(
-    private _dialogRef: MatDialogRef<FsSigninSecurityResetComponent>,
-    @Inject(MAT_DIALOG_DATA) public data,
-  ) { }
 
   public ngOnInit() {
     this.email = this.data.email;

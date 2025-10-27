@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
@@ -24,6 +24,9 @@ import { MatIcon } from '@angular/material/icon';
     imports: [FsLabelModule, MatIcon],
 })
 export class FsSigninSecurityComponent implements OnInit, OnDestroy {
+  private fsPassword = inject(FsPasswordService);
+  private dialog = inject(MatDialog);
+
 
   @Input() public email: string = null;
   @Input() public lastSignIn: any = null;
@@ -50,11 +53,6 @@ export class FsSigninSecurityComponent implements OnInit, OnDestroy {
   public date = null;
 
   private _destroy$ = new Subject();
-
-  constructor(
-    private fsPassword: FsPasswordService,
-    private dialog: MatDialog,
-  ) { }
 
   public ngOnInit() {
     this.date = this.lastSignIn ? format(this.lastSignIn, 'date-time') : 'Never';
