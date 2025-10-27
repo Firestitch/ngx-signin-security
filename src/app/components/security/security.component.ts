@@ -11,13 +11,17 @@ import { Observable, Subject } from 'rxjs';
 import { Password } from '../../interfaces/password';
 import { PasswordBehavior } from '../../types/password-behavior.enum';
 import { FsSigninSecurityResetComponent } from '../security-reset/security-reset.component';
+import { FsLabelModule } from '@firestitch/label';
+import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
-  selector: 'fs-signin-security',
-  templateUrl: './security.component.html',
-  styleUrls: ['./security.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-signin-security',
+    templateUrl: './security.component.html',
+    styleUrls: ['./security.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [FsLabelModule, MatIcon],
 })
 export class FsSigninSecurityComponent implements OnInit, OnDestroy {
 

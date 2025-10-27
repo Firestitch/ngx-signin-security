@@ -38,13 +38,11 @@ import { FsSigninSecurityConfig } from './interfaces';
         FsDateModule,
         FsLabelModule,
         FsClipboardModule,
+        FsSigninSecurityComponent,
+        FsSigninSecurityResetComponent,
     ],
     exports: [
         FsSigninSecurityComponent,
-    ],
-    declarations: [
-        FsSigninSecurityComponent,
-        FsSigninSecurityResetComponent,
     ]
 })
 export class FsSigninSecurityModule {
