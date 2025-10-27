@@ -6,34 +6,40 @@
       </mat-icon>
       Email
     </fs-label>
-    <ng-container *ngIf="email">
+    @if (email) {
       {{ email }}
-    </ng-container>
-    <ng-container *ngIf="!email">
+    }
+    @if (!email) {
       No email
-    </ng-container>
+    }
   </fs-label-field>
-  <fs-label-field *ngIf="passwordBehavior !== 'none'">
-    <fs-label>
-      <mat-icon inline="true">
-        vpn_key
-      </mat-icon>
-      Password
-    </fs-label>
-    <a
-        *ngIf="passwordBehavior === 'change'"
-        (click)="onChangePassword()">
-      Change password
-    </a>
-    <a
-        *ngIf="passwordBehavior === 'reset'"
-        (click)="onResetPassword()">
-      Reset password
-    </a>
-    <span *ngIf="passwordBehavior === 'deleted'">
-      Account deleted
-    </span>
-  </fs-label-field>
+  @if (passwordBehavior !== 'none') {
+    <fs-label-field>
+      <fs-label>
+        <mat-icon inline="true">
+          vpn_key
+        </mat-icon>
+        Password
+      </fs-label>
+      @if (passwordBehavior === 'change') {
+        <a
+          (click)="onChangePassword()">
+          Change password
+        </a>
+      }
+      @if (passwordBehavior === 'reset') {
+        <a
+          (click)="onResetPassword()">
+          Reset password
+        </a>
+      }
+      @if (passwordBehavior === 'deleted') {
+        <span>
+          Account deleted
+        </span>
+      }
+    </fs-label-field>
+  }
   <fs-label-field>
     <fs-label>
       {{ lastSignInLabel }}
