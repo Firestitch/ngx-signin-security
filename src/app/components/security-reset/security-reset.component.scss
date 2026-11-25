@@ -36,6 +36,11 @@ mat-dialog-content {
   }
 }
 
+// The "Email ... password to <email>" label wraps a long email inside the dialog.
+mat-slide-toggle {
+  overflow-wrap: anywhere;
+}
+
 mat-slide-toggle + mat-slide-toggle {
   display: block;
   margin-top: 10px;

@@ -13,6 +13,8 @@ mat-icon {
   
   fs-label-field {
     margin-right: 20px;
+    // A long email wraps inside the field instead of running past the page edge.
+    overflow-wrap: anywhere;
     &:last-child {
       margin-right: 0;
     }
